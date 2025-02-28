@@ -1,5 +1,3 @@
-package HW4;
-
 /*
  * *** Arek Gubala / COMP 272-001 ***
  *
