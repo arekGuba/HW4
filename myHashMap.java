@@ -249,10 +249,10 @@
             size--;
             return value;
           }
-          // main body loop, runs until the last node in the bucket is checked
+          // traverse rest of the bucket, runs until the last node is checked
           while (cursor.next != null){
             if (cursor.next.key.equals(key)){ // after checking head, check every other node after it
-                HashNode<K, V> target = cursor.next; // make a pointer to the node we're deleting to make removal smoother
+                HashNode<K, V> target = cursor.next; // make a pointer to the node we're about to delete to make removal smoother
                 value = target.value;
                 cursor.next = target.next;
                 target.next = null;
@@ -281,15 +281,16 @@
  
      public boolean remove(K key, V val) {
  
+
+        // check the current value given key
+        // if it's null or isn't equal to val, return false & do nothing
          V originalValue = get(key);
  
-         if (originalValue == null || 
-            (! originalValue.equals(val)) ) {
+         if (originalValue == null || !originalValue.equals(val) ) {
              return false;
          }
  
-         // Key was found and its value equals the passed
-         // parameter 'val'
+         // otherwise, key was found and has value equal to val
          remove(key);
  
          return true;
